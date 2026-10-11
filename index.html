@@ -62,6 +62,41 @@ function draw(){
  for(let d=5;d<length-4;d+=12){let p=at(d),q=at(Math.min(length,d+1)),ang=Math.atan2(q.y-p.y,q.x-p.x);x.save();x.translate(p.x,p.y);x.rotate(ang+Math.PI/2);x.strokeStyle='#a39775';x.globalAlpha=.8;x.lineWidth=1.4;x.beginPath();x.moveTo(-16,-14);x.lineTo(16,-14);x.stroke();x.strokeStyle='#fff3cc';x.globalAlpha=.65;x.beginPath();x.moveTo(-14,-17);x.lineTo(14,-17);x.stroke();x.restore()}
  x.globalAlpha=1;
  for(let d=22;d<length;d+=76){let p=at(d);let g=x.createRadialGradient(p.x,p.y,1,p.x,p.y,22);g.addColorStop(0,'#ffedab66');g.addColorStop(1,'#ffc75b00');x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,22,0,6.28);x.fill()}
+ // Cinematic terrain pass: carved cliffs, waterfall mist, luminous river and ancient ruins.
+ x.save();
+ // layered ridge silhouettes
+ const ridge=(pts,fill,stroke)=>{x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.fillStyle=fill;x.fill();if(stroke){x.strokeStyle=stroke;x.lineWidth=2;x.stroke()}};
+ ridge([[0,0],[0,115],[38,89],[72,112],[117,66],[151,100],[192,57],[231,98],[271,75],[312,112],[353,55],[396,96],[438,61],[480,103],[526,72],[565,109],[610,67],[653,106],[693,77],[720,102],[720,0]],'#091f2d99');
+ // distant fortress silhouette with warm windows
+ x.save();x.translate(548,92);x.globalAlpha=.84;
+ x.fillStyle='#071923';x.beginPath();x.ellipse(5,70,79,17,0,0,Math.PI*2);x.fill();
+ const towerBlock=(xx,yy,w,h)=>{x.fillStyle='#344d4d';x.fillRect(xx,yy,w,h);x.strokeStyle='#b9a879';x.lineWidth=2;x.strokeRect(xx,yy,w,h);x.fillStyle='#9c9572';x.beginPath();x.moveTo(xx-5,yy);x.lineTo(xx+w/2,yy-19);x.lineTo(xx+w+5,yy);x.closePath();x.fill();x.stroke()};
+ towerBlock(-46,24,22,45);towerBlock(-8,5,30,64);towerBlock(35,32,20,37);
+ x.fillStyle='#ffe7a0';[[-39,34],[-39,49],[1,18],[1,34],[42,42]].forEach(p=>x.fillRect(p[0],p[1],4,7));
+ x.restore();
+ // waterfall ribbons and spray in the left ravine
+ const fall=x.createLinearGradient(174,0,226,0);fall.addColorStop(0,'#79eaff08');fall.addColorStop(.45,'#c4fff8aa');fall.addColorStop(1,'#4dd8ff15');
+ x.fillStyle=fall;x.beginPath();x.moveTo(177,173);x.lineTo(205,181);x.lineTo(214,242);x.lineTo(199,286);x.lineTo(214,328);x.lineTo(188,355);x.lineTo(180,319);x.lineTo(190,278);x.lineTo(179,235);x.closePath();x.fill();
+ x.strokeStyle='#d9fff7aa';x.lineWidth=3;x.beginPath();x.moveTo(193,190);x.bezierCurveTo(205,225,188,256,199,283);x.bezierCurveTo(207,308,190,330,196,347);x.stroke();
+ // ancient stones and broken pillars along the forest edge
+ for(const [xx,yy,sc] of [[38,278,.8],[490,163,.85],[636,235,.72],[674,292,.6]]){
+  x.save();x.translate(xx,yy);x.scale(sc,sc);x.fillStyle='#142d35';x.fillRect(-9,-28,18,32);x.fillStyle='#788a79';x.fillRect(-7,-27,14,29);x.fillStyle='#b7ad85';x.beginPath();x.moveTo(-13,-27);x.lineTo(0,-42);x.lineTo(13,-27);x.closePath();x.fill();x.strokeStyle='#d5d0a6';x.lineWidth=1.5;x.stroke();x.fillStyle='#ffdfa0';x.fillRect(-2,-18,4,6);x.restore();
+ }
+ // broad-leaf canopy clusters; varied sizes create foreground depth
+ for(const [xx,yy,sc] of [[22,188,1.1],[64,174,.7],[115,193,.9],[356,170,.75],[398,190,.85],[686,190,1.05],[20,485,.9],[80,500,.7],[690,444,1.0],[711,495,.85],[580,504,.65]]){
+  x.save();x.translate(xx,yy);x.scale(sc,sc);
+  x.fillStyle='#082b2d';x.beginPath();x.moveTo(0,8);x.lineTo(-17,-8);x.lineTo(-9,-7);x.lineTo(-18,-22);x.lineTo(-5,-18);x.lineTo(0,-35);x.lineTo(7,-18);x.lineTo(18,-24);x.lineTo(10,-7);x.lineTo(18,-8);x.closePath();x.fill();
+  x.fillStyle='#246b4e';x.beginPath();x.moveTo(0,3);x.lineTo(-12,-8);x.lineTo(-5,-7);x.lineTo(-11,-19);x.lineTo(0,-14);x.lineTo(7,-20);x.lineTo(5,-7);x.lineTo(12,-9);x.closePath();x.fill();
+  x.strokeStyle='#8ebc77aa';x.lineWidth=1.2;x.beginPath();x.moveTo(0,-28);x.lineTo(0,7);x.stroke();x.restore();
+ }
+ // scattered bioluminescent motes and flower sparks
+ for(const [xx,yy,rr] of [[94,246,25],[442,288,30],[621,367,24],[312,350,18],[585,292,16]]){
+  const glow=x.createRadialGradient(xx,yy,0,xx,yy,rr);glow.addColorStop(0,'#c8ffff77');glow.addColorStop(1,'#53dfff00');x.fillStyle=glow;x.beginPath();x.arc(xx,yy,rr,0,Math.PI*2);x.fill();
+ }
+ for(const [xx,yy] of [[88,333],[98,327],[345,333],[357,325],[590,365],[604,358],[256,468],[501,461]]){
+  x.save();x.translate(xx,yy);x.rotate(Math.PI/4);x.fillStyle='#ffb5f2';x.shadowColor='#ff8be9';x.shadowBlur=8;x.fillRect(-3,-3,6,6);x.restore();
+ }
+ x.restore();
  // Fixed build plinths: carved stone rings with cyan runic light.
  for(let p of buildSpots){let occupied=towers.some(t=>Math.hypot(t.x-p[0],t.y-p[1])<8),active=pendingSpot===p;x.save();x.translate(...p);x.fillStyle='#061820';x.beginPath();x.ellipse(1,7,21,15,0,0,6.28);x.fill();x.fillStyle='#455e58';x.beginPath();x.ellipse(0,2,19,14,0,0,6.28);x.fill();x.strokeStyle='#a6bba0';x.lineWidth=2;x.stroke();x.fillStyle='#263d3b';x.beginPath();x.ellipse(0,0,14,10,0,0,6.28);x.fill();x.strokeStyle=active?'#fff0a0':occupied?'#a2b9a8':'#63efff';x.lineWidth=2.5;x.shadowColor=x.strokeStyle;x.shadowBlur=active?18:8;x.beginPath();x.arc(0,0,12+Math.sin(now/250),0,6.28);x.stroke();x.shadowBlur=0;if(!occupied){x.strokeStyle=active?'#fff0a0':'#e1ffff';x.lineWidth=2.2;x.beginPath();x.moveTo(-4,0);x.lineTo(4,0);x.moveTo(0,-4);x.lineTo(0,4);x.stroke()}else{ x.fillStyle='#f9e9b1';x.font='bold 11px system-ui';x.textAlign='center';x.fillText('✦',0,4)}x.restore()}
  // Defensive structures now read as miniature fantasy buildings with layered masonry.
