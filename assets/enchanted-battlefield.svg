@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520">
+<defs>
+ <linearGradient id="ground" x2=".2" y2="1"><stop stop-color="#214f46"/><stop offset=".46" stop-color="#1c6048"/><stop offset="1" stop-color="#082b31"/></linearGradient>
+ <linearGradient id="cliff" x2=".3" y2="1"><stop stop-color="#607d75"/><stop offset=".32" stop-color="#304e4d"/><stop offset="1" stop-color="#152e37"/></linearGradient>
+ <linearGradient id="water" x2="1" y2="1"><stop stop-color="#b5fff4"/><stop offset=".22" stop-color="#4fe0ed"/><stop offset=".7" stop-color="#1684b3"/><stop offset="1" stop-color="#103b73"/></linearGradient>
+ <linearGradient id="crystal" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".25" stop-color="#a8ffff"/><stop offset=".6" stop-color="#37cfff"/><stop offset="1" stop-color="#2162c7"/></linearGradient>
+ <radialGradient id="mist"><stop stop-color="#9affed" stop-opacity=".35"/><stop offset="1" stop-color="#69f9ed" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0ad"/><stop offset=".5" stop-color="#c9a75c"/><stop offset="1" stop-color="#72502e"/></linearGradient>
+ <g id="pine"><ellipse cx="3" cy="16" rx="14" ry="5" fill="#071c20" opacity=".55"/><path d="M0 -25L-12 -5H-5L-15 7H-6L-10 14H10L6 7H15L5 -5H12Z" fill="#0e332f" stroke="#4f9270" stroke-width="1.2"/><path d="M0 -21L-7 -5H-2L-9 6H0V12H3V-17Z" fill="#2e7450"/><path d="M0 -20V9" stroke="#9acb87" opacity=".65"/></g>
+ <g id="crystalSmall"><path d="M0 -16L7 -3L4 13L0 18L-5 9L-6 -3Z" fill="url(#crystal)" stroke="#b8ffff" stroke-width="1.2"/><path d="M0 -16V18L-5 9L-6 -3Z" fill="#d8ffff" opacity=".65"/></g>
+ <g id="ruin"><path d="M-17 18V-12L-10 -23L-3 -12V18Z" fill="#2c4648" stroke="#8ba99a" stroke-width="1.4"/><path d="M-21 -11L-10 -28L1 -11Z" fill="#7d8e7a" stroke="#c9d0a9" stroke-width="1.5"/><path d="M-12 0H-7V9H-12Z" fill="#f7d67e"/><path d="M-20 18H4" stroke="#d3bd81" stroke-width="3"/></g>
+ <g id="flower"><path d="M0 0V-5" stroke="#477f51" stroke-width="1.4"/><circle cy="-7" r="3.2" fill="#f3b5f6"/><circle cx="-3" cy="-5" r="2.5" fill="#ffdaef"/><circle cx="3" cy="-5" r="2.5" fill="#db8ce7"/><circle cy="-5" r="1.6" fill="#ffe9a0"/></g>
+</defs>
+<rect width="720" height="520" fill="url(#ground)"/>
+<!-- distant mountain amphitheatre -->
+<path d="M0 156L35 105L72 128L120 53L164 107L205 75L249 135L293 92L336 142L384 75L427 130L478 56L528 112L575 66L619 120L672 48L720 110V0H0Z" fill="#173d42"/>
+<path d="M0 147L35 105L72 128L120 53L164 107L205 75L249 135L293 92L336 142L384 75L427 130L478 56L528 112L575 66L619 120L672 48L720 110" fill="none" stroke="#7da59a" stroke-width="2" opacity=".6"/>
+<path d="M0 173L70 137L112 159L168 117L218 157L279 123L334 167L391 126L443 165L500 117L551 162L611 115L672 152L720 130V0H0Z" fill="#275348" opacity=".65"/>
+<!-- distant castle on high cliffs -->
+<g opacity=".94" transform="translate(510 28)"><path d="M-10 88L6 44L29 58L44 30L63 53L81 42L99 88Z" fill="url(#cliff)" stroke="#79998b" stroke-width="1.5"/><path d="M8 83V47H22V31H29V47H39V83M48 83V28H61V12H68V28H80V83M88 83V52H101V37H108V52H118V83" fill="#243f43" stroke="#a9b6a0" stroke-width="1.5"/><path d="M17 59H22V68H17ZM58 42H63V52H58ZM96 62H101V71H96Z" fill="#ffe3a0"/></g>
+<!-- sheer cliffs framing the valley -->
+<path d="M0 0H135L115 48L93 66L80 105L55 126L44 170L0 192Z" fill="url(#cliff)" stroke="#77968a" stroke-width="2"/>
+<path d="M0 15L34 30L48 60L28 85L51 108L20 145L0 150Z" fill="#456c60" opacity=".7"/>
+<path d="M720 0H585L605 48L627 66L640 105L665 126L676 170L720 192Z" fill="url(#cliff)" stroke="#77968a" stroke-width="2"/>
+<!-- waterfalls and splash pools -->
+<path d="M50 96C69 118 53 144 72 164S72 193 86 213L107 213C92 189 102 173 86 151S91 117 70 91Z" fill="url(#water)" opacity=".92"/>
+<path d="M65 103C82 126 68 146 84 167S84 191 96 204" fill="none" stroke="#d6fffb" stroke-width="3" opacity=".75"/>
+<path d="M630 88C610 113 629 137 609 161S611 192 594 216L575 216C590 190 579 175 596 151S591 113 612 83Z" fill="url(#water)" opacity=".92"/>
+<path d="M615 95C598 124 613 144 597 167S597 190 584 205" fill="none" stroke="#d6fffb" stroke-width="3" opacity=".75"/>
+<ellipse cx="103" cy="216" rx="74" ry="35" fill="#42d8e7" opacity=".13"/><ellipse cx="581" cy="218" rx="74" ry="35" fill="#42d8e7" opacity=".13"/>
+<!-- crossing river in lower valley -->
+<path d="M-20 331C61 287 92 364 157 351S229 403 292 398S362 456 430 448S525 410 555 437" fill="none" stroke="#071d28" stroke-width="53"/>
+<path d="M-20 331C61 287 92 364 157 351S229 403 292 398S362 456 430 448S525 410 555 437" fill="none" stroke="#12536d" stroke-width="45"/>
+<path d="M-20 331C61 287 92 364 157 351S229 403 292 398S362 456 430 448S525 410 555 437" fill="none" stroke="url(#water)" stroke-width="32"/>
+<path d="M-20 327C61 283 92 360 157 347S229 399 292 394S362 452 430 444S525 406 555 433" fill="none" stroke="#c0ffff" stroke-width="2.5" stroke-dasharray="8 18" opacity=".7"/>
+<!-- natural ledges and moss patches -->
+<g fill="#4a8b58" opacity=".65"><path d="M15 233l42 -20 25 11 -18 25 -48 4Z"/><path d="M185 44l35 -13 30 15 -14 18 -41 2Z"/><path d="M325 25l42 -15 30 15 -13 20 -48 3Z"/><path d="M460 222l35 -19 29 13 -10 21 -42 7Z"/><path d="M570 298l37 -13 29 18 -12 20 -42 -2Z"/><path d="M275 472l42 -19 31 16 -14 19 -46 4Z"/></g>
+<!-- ancient broken columns and bridges -->
+<g transform="translate(43 260)"><use href="#ruin"/><path d="M-25 20H22" stroke="#bba36c" stroke-width="4"/></g>
+<g transform="translate(680 290) scale(.85)"><use href="#ruin"/></g>
+<g transform="translate(96 422) scale(.7)"><use href="#ruin"/></g>
+<g transform="translate(472 44) scale(.7)"><use href="#ruin"/></g>
+<!-- enchanted tree groves -->
+<g><use href="#pine" x="24" y="214" transform="translate(24 214) scale(1.4)"/><use href="#pine" x="52" y="302" transform="translate(52 302) scale(1.2)"/><use href="#pine" transform="translate(35 366) scale(1.5)"/><use href="#pine" transform="translate(88 474) scale(1.6)"/><use href="#pine" transform="translate(153 42) scale(1.1)"/><use href="#pine" transform="translate(195 54) scale(.85)"/><use href="#pine" transform="translate(246 35) scale(1.1)"/><use href="#pine" transform="translate(300 47) scale(.9)"/><use href="#pine" transform="translate(357 40) scale(1.2)"/><use href="#pine" transform="translate(408 48) scale(.9)"/><use href="#pine" transform="translate(466 77) scale(1.15)"/><use href="#pine" transform="translate(558 64) scale(1.25)"/><use href="#pine" transform="translate(602 262) scale(1.35)"/><use href="#pine" transform="translate(690 228) scale(1.4)"/><use href="#pine" transform="translate(696 368) scale(1.4)"/><use href="#pine" transform="translate(680 490) scale(1.2)"/><use href="#pine" transform="translate(520 492) scale(1.4)"/><use href="#pine" transform="translate(450 494) scale(1.1)"/><use href="#pine" transform="translate(376 480) scale(1.2)"/><use href="#pine" transform="translate(240 490) scale(1.3)"/><use href="#pine" transform="translate(145 483) scale(1.1)"/></g>
+<!-- magical crystal clusters -->
+<g filter="none"><use href="#crystalSmall" transform="translate(80 185) scale(1.1)"/><use href="#crystalSmall" transform="translate(628 233) scale(1.4)"/><use href="#crystalSmall" transform="translate(160 385) scale(.8)"/><use href="#crystalSmall" transform="translate(480 388) scale(1.15)"/><use href="#crystalSmall" transform="translate(280 45) scale(.8)"/><use href="#crystalSmall" transform="translate(555 110) scale(.8)"/></g>
+<!-- flowering clearings -->
+<g><use href="#flower" transform="translate(151 268)"/><use href="#flower" transform="translate(168 278)"/><use href="#flower" transform="translate(172 293)"/><use href="#flower" transform="translate(352 250)"/><use href="#flower" transform="translate(371 260)"/><use href="#flower" transform="translate(389 247)"/><use href="#flower" transform="translate(493 308)"/><use href="#flower" transform="translate(512 317)"/><use href="#flower" transform="translate(492 327)"/><use href="#flower" transform="translate(255 447)"/><use href="#flower" transform="translate(275 458)"/><use href="#flower" transform="translate(291 446)"/><use href="#flower" transform="translate(630 340)"/><use href="#flower" transform="translate(647 351)"/></g>
+<!-- luminous runes and motes -->
+<g fill="#b9fff1"><circle cx="182" cy="111" r="2"/><circle cx="219" cy="299" r="2"/><circle cx="352" cy="172" r="2"/><circle cx="405" cy="255" r="2"/><circle cx="528" cy="185" r="2"/><circle cx="570" cy="377" r="2"/><circle cx="328" cy="452" r="2"/><circle cx="115" cy="450" r="2"/></g>
+<g fill="url(#mist)"><circle cx="185" cy="184" r="90"/><circle cx="363" cy="297" r="100"/><circle cx="525" cy="250" r="110"/><circle cx="340" cy="465" r="80"/></g>
+<!-- vignette -->
+<rect width="720" height="520" fill="none" stroke="#07121c" stroke-width="24" opacity=".42"/>
+</svg>
