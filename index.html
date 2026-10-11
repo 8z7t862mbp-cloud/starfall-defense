@@ -92,4 +92,12 @@ for(let i=0;i<12;i++){const g=scene.children[i];if(g&&g.userData.float!==undefin
 function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05);update(dt);renderer.render(scene,camera)}
 const clock=new THREE.Clock();setCamera();window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.6))});
 animate();requestAnimationFrame(()=>{$('loading').classList.add('hide');setTimeout(()=>$('loading').remove(),500)});Promise.all(modelDefs.map(loadModel)).then(()=>{if(modelCache.size)toast('3D 場景就緒 · 骨架模型 '+modelCache.size+' 組已載入');else toast('3D 場景已就緒 · 使用內建動畫角色')});
+</script><script>
+/* Safety net: never leave the user trapped behind the splash screen if a CDN module fails. */
+window.setTimeout(function(){
+  var splash=document.getElementById('loading');
+  if(splash && !splash.classList.contains('hide')){
+    splash.innerHTML='<div style="max-width:290px;padding:24px;text-align:center"><strong style="font-size:18px">3D 引擎載入逾時</strong><p style="font-size:13px;line-height:1.7;color:#b8d7e8">可能是目前網路無法連線到 3D 引擎 CDN。請確認網路後按下方重試；如果仍失敗，代表外部引擎尚未載入成功。</p><button onclick="location.reload()" style="padding:12px 22px;border-radius:10px;border:1px solid #77efff;background:#17344a;color:white;font-weight:700">重新載入</button></div>';
+  }
+},10000);
 </script></body></html>
