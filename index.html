@@ -64,6 +64,27 @@ function drawBackground(){
  poly([[0,220],[82,254],[126,332],[92,430],[34,493],[0,480]],'#285344','#83a77b',3);poly([[0,270],[62,300],[95,358],[59,439],[0,455]],'#173b32','#467c60',2);poly([[720,205],[650,252],[625,345],[668,423],[720,462]],'#285344','#83a77b',3);poly([[720,285],[674,319],[658,378],[695,430],[720,438]],'#15392f','#467c60',2);
  x.save();x.lineCap='round';x.lineJoin='round';x.beginPath();x.moveTo(-25,430);x.bezierCurveTo(105,390,105,500,220,535);x.bezierCurveTo(315,565,350,650,460,665);x.bezierCurveTo(550,685,550,815,735,850);x.strokeStyle='#052c43';x.lineWidth=86;x.stroke();x.strokeStyle='#08738c';x.lineWidth=68;x.stroke();x.strokeStyle='#35c7d9';x.lineWidth=48;x.stroke();x.strokeStyle='#b8ffff99';x.lineWidth=3;x.setLineDash([20,25]);x.stroke();x.setLineDash([]);x.restore();
  for(const [xx,yy,ww,hh] of [[25,390,45,180],[625,275,42,220],[380,700,65,270]]){x.save();x.beginPath();x.moveTo(xx,yy);x.bezierCurveTo(xx+ww,yy+35,xx-ww*.3,yy+hh*.5,xx+ww*.2,yy+hh);x.lineTo(xx+ww*.65,yy+hh);x.bezierCurveTo(xx+ww*.4,yy+hh*.5,xx+ww*1.1,yy+40,xx,yy);x.closePath();const wg=x.createLinearGradient(xx,yy,xx+ww,yy);wg.addColorStop(0,'#2bb5ce33');wg.addColorStop(.45,'#a5ffffcc');wg.addColorStop(1,'#38bcd688');x.fillStyle=wg;x.fill();x.strokeStyle='#e2ffffbb';x.lineWidth=2;x.stroke();for(let j=0;j<16;j++){const sy=yy+(j*31+tm*40)%hh;x.strokeStyle=j%2?'#e8ffffaa':'#69edffbb';x.lineWidth=1.4;x.beginPath();x.moveTo(xx+ww*.28,sy);x.lineTo(xx+ww*.47,sy+12+(j%3)*4);x.stroke();}x.restore();}
+ // Far citadel silhouette with layered ramparts and luminous windows.
+ x.save();x.globalAlpha=.82;
+ poly([[500,174],[500,145],[516,145],[516,126],[532,126],[532,143],[550,143],[550,112],[565,112],[565,143],[582,143],[582,130],[598,130],[598,148],[616,148],[616,174]],'#183b3c','#719b83',1.5);
+ poly([[493,174],[493,160],[511,160],[511,151],[529,151],[529,164],[547,164],[547,137],[565,137],[565,162],[584,162],[584,150],[603,150],[603,160],[623,160],[623,174]],'#254e48','#8eb39a',1.2);
+ for(const [wx,wy] of [[505,166],[523,158],[548,153],[565,151],[588,164],[608,166]]){glow(wx,wy,12,'#ffd878',.35);x.fillStyle='#ffdf8d';x.fillRect(wx-2,wy-4,4,8);}
+ x.restore();
+ // Rock strata on both banks; highlight ridges to give the valley real depth.
+ poly([[0,294],[46,282],[75,310],[91,354],[72,399],[38,429],[0,418]],'#122e2b','#527b67',2);
+ poly([[0,309],[38,297],[62,322],[76,356],[54,390],[22,412],[0,404]],'#1e4538','#71937a',1.5);
+ poly([[720,280],[682,294],[656,329],[649,366],[675,402],[703,426],[720,418]],'#102b2a','#527b67',2);
+ poly([[720,300],[691,309],[670,336],[664,367],[687,395],[711,410],[720,405]],'#1b4338','#71937a',1.5);
+ for(let i=0;i<24;i++){const side=i%2?0:1,yy=315+((i*47)%540),xx=side?650+((i*19)%65):((i*23)%65),sz=5+(i%5)*2;
+   poly([[xx-sz,yy-sz*.35],[xx,yy-sz],[xx+sz,yy-sz*.2],[xx+sz*.65,yy+sz*.6],[xx-sz*.5,yy+sz]],i%3?'#284d3c':'#365846','#66836a',.8);
+ }
+ // Ancient rune stones and broken columns beside the road.
+ for(const [rx,ry,sc] of [[42,525,.9],[670,500,.75],[83,770,.8],[635,855,.85],[585,465,.55],[205,915,.6]]){
+   x.save();x.translate(rx,ry);x.scale(sc,sc);x.fillStyle='#061b20aa';x.beginPath();x.ellipse(0,8,18,8,0,0,Math.PI*2);x.fill();
+   poly([[-11,5],[-10,-20],[-5,-30],[7,-28],[11,-18],[10,5]],'#354d50','#9d9d7c',1.5);
+   poly([[-7,-2],[-6,-18],[0,-24],[6,-17],[6,-2]],'#253b43','#6fe7e5',1);
+   x.strokeStyle='#79e7dfaa';x.lineWidth=1.5;x.beginPath();x.moveTo(-3,-17);x.lineTo(2,-11);x.lineTo(-2,-6);x.stroke();x.restore();
+ }
  for(let i=0;i<126;i++){const xx=(i*131+17)%740,yy=(i*173+37)%1010;if(Math.abs(yy-300)<140&&xx>55&&xx<665)continue;drawTree(xx,yy,.42+((i*7)%10)/11,i);}
  for(let i=0;i<22;i++){const xx=(i*173+70)%700,yy=(i*227+245)%970;if(Math.abs(yy-300)<115&&xx>60&&xx<650)continue;const h=10+(i%4)*7;poly([[xx,yy-h],[xx+7,yy],[xx,yy+8],[xx-6,yy]],i%2?'#6ceaff':'#a4a5ff','#d8ffff',1);glow(xx,yy,23,i%2?'#42e8ff':'#9688ff',.22);}
  for(let i=0;i<70;i++){const xx=(i*113+43)%720,yy=(i*179+87)%1000;if(Math.abs(yy-330)<125&&xx>45&&xx<675)continue;const pulse=.5+.5*Math.sin(tm*2+i);glow(xx,yy,5+pulse*9,i%3?'#72edff':'#ff9df1',.14+pulse*.14);x.fillStyle=i%3?'#b5ffff':'#ffc2f7';x.beginPath();x.arc(xx,yy,1+pulse,0,Math.PI*2);x.fill();}
