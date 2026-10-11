@@ -97,7 +97,7 @@ animate();requestAnimationFrame(()=>{$('loading').classList.add('hide');setTimeo
 window.setTimeout(function(){
   var splash=document.getElementById('loading');
   if(splash && !splash.classList.contains('hide')){
-    splash.innerHTML='<div style="max-width:290px;padding:24px;text-align:center"><strong style="font-size:18px">3D 引擎載入逾時</strong><p style="font-size:13px;line-height:1.7;color:#b8d7e8">可能是目前網路無法連線到 3D 引擎 CDN。請確認網路後按下方重試；如果仍失敗，代表外部引擎尚未載入成功。</p><button onclick="location.reload()" style="padding:12px 22px;border-radius:10px;border:1px solid #77efff;background:#17344a;color:white;font-weight:700">重新載入</button></div>';
+    splash.innerHTML='<div style="max-width:290px;padding:24px;text-align:center"><strong style="font-size:18px">3D 引擎載入逾時</strong><p style="font-size:13px;line-height:1.7;color:#b8d7e8">3D 程式沒有成功啟動，可能是瀏覽器阻擋了外部模組或 WebGL。這不是你操作錯誤。請按重試；若再次出現，代表我需要改用不依賴外部 CDN 的部署方式。</p><button onclick="location.reload()" style="padding:12px 22px;border-radius:10px;border:1px solid #77efff;background:#17344a;color:white;font-weight:700">重新載入</button></div>';
   }
-},10000);
+},5000);
 </script></body></html>
