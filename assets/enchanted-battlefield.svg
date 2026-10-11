@@ -51,4 +51,43 @@
 <g fill="url(#mist)"><circle cx="185" cy="184" r="90"/><circle cx="363" cy="297" r="100"/><circle cx="525" cy="250" r="110"/><circle cx="340" cy="465" r="80"/></g>
 <!-- vignette -->
 <rect width="720" height="520" fill="none" stroke="#07121c" stroke-width="24" opacity=".42"/>
+
+<!-- Premium art pass: distant citadel, cascading falls, layered canopy and enchanted flora -->
+<defs>
+ <linearGradient id="fall2" x2="1" y2="0"><stop stop-color="#3cb5dc" stop-opacity=".15"/><stop offset=".45" stop-color="#c5fff9" stop-opacity=".92"/><stop offset="1" stop-color="#44b8f0" stop-opacity=".2"/></linearGradient>
+ <linearGradient id="goldstone" x2="0" y2="1"><stop stop-color="#f9e8b6"/><stop offset=".5" stop-color="#a79b77"/><stop offset="1" stop-color="#4b6057"/></linearGradient>
+ <radialGradient id="aura"><stop stop-color="#e8ffff" stop-opacity=".75"/><stop offset="1" stop-color="#54ddff" stop-opacity="0"/></radialGradient>
+ <g id="grandpine"><path d="M0 0 -20 29 -10 27 -28 51 -14 49 -34 76 34 76 14 49 28 51 10 27 20 29Z" fill="#092e30" stroke="#75ad78" stroke-width="2"/><path d="M0 4 -13 29 -5 28 -21 51 -8 49 -25 69 0 61 25 69 8 49 21 51 5 28 13 29Z" fill="#267653"/><path d="M0 12V71" stroke="#b5d28b" stroke-opacity=".5" stroke-width="2"/></g>
+ <g id="glowflower"><path d="M0 -9 3 -3 9 0 3 3 0 9 -3 3 -9 0 -3 -3Z" fill="#ffaef2" stroke="#ffe7ff" stroke-width="1"/></g>
+</defs>
+<g opacity=".96">
+ <path d="M0 160 45 108 74 127 110 76 142 118 178 67 213 119 248 88 278 131 316 75 353 117 390 61 430 114 465 76 500 119 540 69 575 114 614 76 651 125 690 86 720 117V240H0Z" fill="#102d38" opacity=".75"/>
+ <path d="M0 190 55 144 93 169 132 121 169 158 213 113 250 158 290 127 330 168 372 118 414 160 459 121 500 166 543 127 583 169 630 119 675 160 720 139V270H0Z" fill="#24634e" opacity=".8"/>
+ <g transform="translate(545 105)">
+  <ellipse cx="4" cy="70" rx="85" ry="22" fill="#061622" opacity=".6"/>
+  <path d="M-67 70 -59 36 -39 21 -23 37 -6 4 15 32 34 15 51 41 69 70Z" fill="#455e59" stroke="#b5bd94" stroke-width="2"/>
+  <path d="M-49 69V22H-24V69M-5 69V5H24V69M38 69V33H59V69" fill="url(#goldstone)" stroke="#e7d7a6" stroke-width="2"/>
+  <path d="M-54 23 -36 -4 -18 23M-10 6 9 -25 29 6M34 34 49 12 64 34" fill="#8c8c6d" stroke="#f6e4b3" stroke-width="2"/>
+  <path d="M-4 69V48Q9 29 22 48V69Z" fill="#071827" stroke="#f5d991" stroke-width="2"/>
+  <g fill="#fff0b0"><rect x="-42" y="34" width="5" height="9"/><rect x="-42" y="49" width="5" height="9"/><rect x="5" y="14" width="6" height="10"/><rect x="5" y="32" width="6" height="10"/><rect x="45" y="43" width="5" height="8"/></g>
+  <path d="M9 -25V-43" stroke="#ffe7a3" stroke-width="2"/><path d="M9 -43 26 -36 9 -29Z" fill="#ff82bb"/>
+ </g>
+ <path d="M0 215 70 177 108 197 151 161 193 194 233 168 270 204 291 257 273 294 242 321 214 357 0 373Z" fill="#5b7669" stroke="#8caa8c" stroke-width="3"/>
+ <path d="M173 190 204 192 213 246 201 279 214 319 193 356 177 326 187 280 177 238Z" fill="url(#fall2)"/>
+ <path d="M187 197Q202 234 192 270T195 344" stroke="#e4ffff" stroke-width="4" fill="none" opacity=".7"/>
+ <path d="M0 358Q65 331 126 355T238 355T343 374T450 354" stroke="#082a38" stroke-width="44" fill="none"/>
+ <path d="M0 355Q65 328 126 352T238 352T343 371T450 351" fill="none" stroke="#28bfe2" stroke-width="31"/>
+ <path d="M0 348Q65 321 126 345T238 345T343 364T450 344" fill="none" stroke="#d6fff8" stroke-width="3" stroke-dasharray="23 17" opacity=".8"/>
+</g>
+<g opacity=".9">
+ <use href="#grandpine" transform="translate(25 184) scale(1.05)"/><use href="#grandpine" transform="translate(74 160) scale(.76)"/><use href="#grandpine" transform="translate(121 185) scale(1.1)"/>
+ <use href="#grandpine" transform="translate(361 167) scale(1.02)"/><use href="#grandpine" transform="translate(408 190) scale(.8)"/><use href="#grandpine" transform="translate(687 187) scale(1.15)"/>
+ <use href="#grandpine" transform="translate(20 470) scale(1.1)"/><use href="#grandpine" transform="translate(81 491) scale(.9)"/><use href="#grandpine" transform="translate(682 420) scale(1.05)"/><use href="#grandpine" transform="translate(711 487) scale(1.2)"/>
+</g>
+<g opacity=".95">
+ <circle cx="95" cy="252" r="52" fill="url(#aura)"/><circle cx="445" cy="290" r="58" fill="url(#aura)"/><circle cx="621" cy="367" r="46" fill="url(#aura)"/>
+ <use href="#glowflower" transform="translate(86 335) scale(1.2)"/><use href="#glowflower" transform="translate(100 326)"/><use href="#glowflower" transform="translate(348 335) scale(1.3)"/><use href="#glowflower" transform="translate(360 326)"/><use href="#glowflower" transform="translate(590 365) scale(1.3)"/><use href="#glowflower" transform="translate(604 357)"/>
+ <g fill="#e0ffff"><circle cx="39" cy="228" r="2"/><circle cx="147" cy="207" r="2"/><circle cx="289" cy="177" r="2"/><circle cx="323" cy="354" r="2"/><circle cx="403" cy="331" r="2"/><circle cx="490" cy="379" r="2"/><circle cx="575" cy="295" r="2"/><circle cx="646" cy="278" r="2"/><circle cx="258" cy="466" r="2"/><circle cx="382" cy="481" r="2"/><circle cx="504" cy="460" r="2"/></g>
+</g>
+
 </svg>
