@@ -56,6 +56,27 @@ let bg=x.createLinearGradient(0,0,720,520);bg.addColorStop(0,'#173d32');bg.addCo
 x.save();x.lineCap='round';x.beginPath();x.moveTo(-25,330);x.bezierCurveTo(50,292,80,365,145,350);x.bezierCurveTo(200,338,210,405,270,398);x.bezierCurveTo(330,389,350,455,420,448);x.strokeStyle='#071d2b';x.lineWidth=43;x.stroke();x.strokeStyle='#14566a';x.lineWidth=34;x.stroke();x.strokeStyle='#2389a0';x.lineWidth=25;x.stroke();x.strokeStyle='#62dce4';x.globalAlpha=.62;x.lineWidth=2;x.setLineDash([3,12]);x.lineDashOffset=-(performance.now()*.025);x.stroke();x.setLineDash([]);x.globalAlpha=1;
 for(let i=0;i<7;i++){let px=42+i*56,py=345+Math.sin(i*1.8)*38;x.fillStyle='#164a50';x.beginPath();x.ellipse(px,py,17,8,i*.4,0,6.28);x.fill();x.fillStyle='#64e9cf';x.globalAlpha=.45;x.beginPath();x.ellipse(px-3,py-2,5,2,-.4,0,6.28);x.fill();x.globalAlpha=1}
 x.restore();
+// Dramatic distant cliffs, layered waterfalls and ancient citadel silhouettes.
+x.save();
+const cliff=(pts,fill,stroke)=>{x.beginPath();pts.forEach((p,i)=>i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]));x.closePath();x.fillStyle=fill;x.fill();if(stroke){x.strokeStyle=stroke;x.lineWidth=2;x.stroke()}};
+cliff([[0,0],[150,0],[128,34],[105,42],[92,72],[63,86],[42,118],[0,130]],'#102f32','#52745e');
+cliff([[720,0],[570,0],[590,34],[613,42],[630,70],[657,86],[681,118],[720,130]],'#0d2a30','#52745e');
+// distant mountain ridges, softly lit by enchanted mist
+x.globalAlpha=.7;cliff([[0,145],[85,66],[137,112],[205,50],[276,124],[340,79],[410,135],[490,62],[562,120],[625,70],[720,138],[720,0],[0,0]],'#1a4140');x.globalAlpha=1;
+for(let side of [0,1]){
+ x.save();x.translate(side?720:0,0);x.scale(side?-1:1,1);
+ // stepped waterfall spilling from the cliff
+ let wg=x.createLinearGradient(28,40,75,190);wg.addColorStop(0,'#5ce4e7');wg.addColorStop(.5,'#248aa4');wg.addColorStop(1,'#103b55');
+ x.beginPath();x.moveTo(25,58);x.bezierCurveTo(42,77,32,104,48,124);x.bezierCurveTo(63,148,42,164,58,191);x.lineTo(80,190);x.bezierCurveTo(63,163,84,147,68,122);x.bezierCurveTo(52,98,67,79,45,56);x.closePath();x.fillStyle=wg;x.fill();
+ x.strokeStyle='#9cfaff';x.globalAlpha=.5;x.lineWidth=2;x.beginPath();x.moveTo(42,72);x.bezierCurveTo(54,100,45,124,59,151);x.stroke();x.globalAlpha=1;
+ // ruined watchtower embedded in the cliff
+ x.fillStyle='#162e35';x.fillRect(94,33,27,47);x.fillRect(89,27,37,9);x.fillRect(99,20,17,10);
+ x.fillStyle='#b9d8a2';x.globalAlpha=.55;x.fillRect(101,44,4,12);x.fillRect(112,44,4,12);x.globalAlpha=1;
+ x.strokeStyle='#8ddfcd';x.globalAlpha=.4;x.lineWidth=1;x.beginPath();x.moveTo(94,38);x.lineTo(121,38);x.moveTo(94,64);x.lineTo(121,64);x.stroke();x.globalAlpha=1;
+ x.restore();
+}
+// Ancient rune fragments and small floating crystals make the terrain feel layered.
+for(let i=0;i<22;i++){let rx=(i*149+33)%720,ry=(i*71+24)%210;if(rx<95||rx>625)continue;let pulse=.6+.4*Math.sin(performance.now()/420+i);x.save();x.translate(rx,ry);x.rotate(Math.sin(i)*.3);x.globalAlpha=.2+.25*pulse;x.shadowColor='#7bfff1';x.shadowBlur=9;x.fillStyle=i%3?'#a7eee1':'#f9d994';x.beginPath();x.moveTo(0,-5-(i%3)*2);x.lineTo(4,0);x.lineTo(0,6);x.lineTo(-4,0);x.closePath();x.fill();x.restore()}x.globalAlpha=1;
 for(let i=0;i<240;i++){let gx=(i*97+13)%720,gy=(i*149+31)%520;x.strokeStyle=i%3?'#70b875':'#c1d77d';x.globalAlpha=.1;x.beginPath();x.moveTo(gx,gy);x.lineTo(gx+(i%2?3:-3),gy-5);x.stroke()}x.globalAlpha=1;
 x.save();x.lineCap='round';x.beginPath();x.moveTo(-20,25);x.bezierCurveTo(130,45,185,155,300,175);x.bezierCurveTo(415,198,485,275,480,365);x.bezierCurveTo(474,438,585,466,740,500);x.strokeStyle='#092b39';x.lineWidth=36;x.stroke();x.strokeStyle='#176a78';x.lineWidth=27;x.stroke();x.strokeStyle='#65d9d1';x.globalAlpha=.6;x.lineWidth=2;x.stroke();x.restore();x.globalAlpha=1;
 for(let i=0;i<38;i++){let rx=(i*181+51)%720,ry=(i*113+77)%520;if(path.some((p,j)=>j&&Math.hypot(rx-p[0],ry-p[1])<49))continue;x.fillStyle=i%2?'#235943':'#2b6247';x.globalAlpha=.5;x.beginPath();x.ellipse(rx,ry,20+(i%4)*4,9+(i%3)*3,i*.7,0,6.28);x.fill();x.globalAlpha=1}
@@ -89,7 +110,7 @@ x.save();x.lineCap='butt';for(let d=10;d<length-5;d+=17){let p=at(d),q=at(Math.m
 for(let i=0;i<12;i++){let gx=(i*211+74)%720,gy=(i*137+62)%520;if(path.some((p,j)=>j&&Math.hypot(gx-p[0],gy-p[1])<52))continue;let pulse=.65+.35*Math.sin(performance.now()/480+i*1.7);let gr=x.createRadialGradient(gx,gy,1,gx,gy,19+pulse*8);gr.addColorStop(0,'#b8ffd566');gr.addColorStop(.45,'#70f2d322');gr.addColorStop(1,'#70f2d300');x.fillStyle=gr;x.beginPath();x.arc(gx,gy,27,0,6.28);x.fill();x.fillStyle='#d4ffb0';x.globalAlpha=.45*pulse;x.beginPath();x.arc(gx,gy,2.1,0,6.28);x.fill();x.globalAlpha=1}
 for(let i=0;i<24;i++){let fx=(i*139+performance.now()*(i%2?-.006:.004)+720)%720,fy=(i*67+Math.sin(performance.now()/700+i)*10)%520;x.fillStyle=i%4===0?'#ffe99b':'#a6f4c9';x.globalAlpha=.3+.25*Math.sin(performance.now()/300+i);x.beginPath();x.arc(fx,fy,i%4===0?2:1.2,0,6.28);x.fill()}x.globalAlpha=1;
 for(let p of buildSpots){let occupied=towers.some(t=>Math.hypot(t.x-p[0],t.y-p[1])<8),active=pendingSpot===p;x.save();x.translate(...p);x.fillStyle='#0a2229';x.beginPath();x.ellipse(0,4,19,14,0,0,6.28);x.fill();x.fillStyle='#657e76';x.beginPath();x.arc(0,0,15,0,6.28);x.fill();x.strokeStyle=active?'#fff0a0':occupied?'#72857b':'#62efff';x.lineWidth=2;x.beginPath();x.arc(0,0,12+Math.sin(performance.now()/250),0,6.28);x.stroke();if(!occupied){x.strokeStyle=active?'#fff0a0':'#c8fff4';x.beginPath();x.moveTo(-4,0);x.lineTo(4,0);x.moveTo(0,-4);x.lineTo(0,4);x.stroke()}else{x.fillStyle='#e1f3d9';x.font='bold 11px system-ui';x.textAlign='center';x.fillText('✦',0,4)}x.restore()}
-for(let t of towers){let ty=types[t.type];x.save();x.translate(t.x,t.y);
+for(let t of towers){let ty=types[t.type];x.save();x.translate(t.x,t.y);x.scale(1.12,1.12);
 const pulse=.85+.15*Math.sin(performance.now()/170+t.x);
 if(t.level>=3){x.strokeStyle=t.level>=5?'#fff0a0':ty.color;x.globalAlpha=.8;x.lineWidth=t.level>=5?3:2;x.beginPath();x.arc(0,0,(t.level>=5?31:25)*pulse,0,6.28);x.stroke();x.globalAlpha=.09;x.fillStyle=ty.color;x.beginPath();x.arc(0,0,31,0,6.28);x.fill();x.globalAlpha=1}
 x.fillStyle='#04131b';x.beginPath();x.ellipse(1,10,25,13,0,0,6.28);x.fill();
