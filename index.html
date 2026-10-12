@@ -12,7 +12,7 @@ const SkeletonUtils=THREE.SkeletonUtils;
 const $=id=>document.getElementById(id);
 const scene=new THREE.Scene();scene.background=new THREE.Color('#9bd8f1');scene.fog=new THREE.FogExp2('#a8dff0',.0025);
 const camera=new THREE.OrthographicCamera(-innerWidth/innerHeight*48,innerWidth/innerHeight*48,48,-48,.1,300);camera.position.set(0,74,44);
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.15));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=false;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;renderer.toneMappingExposure=1;$('game').prepend(renderer.domElement);
+const renderer=new THREE.WebGLRenderer({antialias:false,alpha:false,powerPreference:'low-power',precision:'mediump'});renderer.setPixelRatio(Math.min(devicePixelRatio,1));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=false;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NoToneMapping;renderer.toneMappingExposure=1;$('game').prepend(renderer.domElement);
 scene.add(new THREE.HemisphereLight(0xe4f8ff,0x31503a,.9));const key=new THREE.DirectionalLight(0xfff1ce,1.25);key.position.set(-14,32,12);key.castShadow=false;scene.add(key);const fill=new THREE.DirectionalLight(0xc9f4ff,.45);fill.position.set(18,20,8);scene.add(fill);const rim=new THREE.DirectionalLight(0x6ddaff,.65);rim.position.set(12,14,-18);scene.add(rim);
 const mat=(c,rough=.72,metal=0,extra={})=>new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:metal,...extra});
 const mats={grass:mat('#285b3d'),road:mat('#d9c49a'),roadEdge:mat('#1d2c3b'),gold:mat('#e8b957',.45,.15),dark:mat('#172b3a'),water:mat('#20a9d5',.35,.02,{emissive:'#075d91',emissiveIntensity:.15}),leaf:mat('#1b5133'),leaf2:mat('#347b42'),trunk:mat('#62432f'),crystal:mat('#62d9ec',.3,.04,{emissive:'#1098c9',emissiveIntensity:.55}),pink:mat('#e77eac',.4,.02,{emissive:'#a82370',emissiveIntensity:.3})};
@@ -30,8 +30,8 @@ for(let i=3;i<280;i+=7){const p=curve.getPoint(i/280),t=curve.getTangent(i/280),
 const riverPts=[];for(let i=0;i<65;i++){const zz=-42+i*1.32;riverPts.push(new THREE.Vector3(19+Math.sin(i*.18)*4,-.12,zz))}ribbon(riverPts,5.8,-.08,mats.water);
 const waterGlints=[];for(let i=0;i<22;i++){const p=riverPts[i%riverPts.length],g=mesh(new THREE.SphereGeometry(.06+(i%3)*.025,6,5),mat('#a6fbff',.2,.1,{emissive:'#4deaff',emissiveIntensity:1}),scene,false,false);g.position.set(p.x+(i%5-2)*.3,.03,p.z);waterGlints.push(g)}
 function tree(xx,zz,scale=1){const g=new THREE.Group();scene.add(g);g.position.set(xx,0,zz);g.scale.setScalar(scale);const trunk=mesh(new THREE.CylinderGeometry(.13,.22,1.3,7),mats.trunk,g);trunk.position.y=.55;for(let k=0;k<4;k++){const c=mesh(new THREE.ConeGeometry(1-k*.14,1.55,7),k%2?mats.leaf:mats.leaf2,g);c.position.set(0,1.3+k*.65,0);c.rotation.y=k*.35}const sh=mesh(new THREE.CylinderGeometry(.4,.6,.08,12),mat('#315f4b'),g,false,false);sh.position.y=.04;return g}
-for(let i=0;i<120;i++){const xx=-32+(i*19%65),zz=-46+(i*31%90),p=curve.getPointAt((i*.137)%1);if(Math.abs(xx-p.x)<5.1&&Math.abs(zz-p.z)<4.4)continue;if(xx>14&&xx<27&&zz>-42&&zz<44)continue;tree(xx,zz,.48+(i%6)*.13)}
-for(let i=0;i<18;i++){const side=i%2?-1:1,zz=-43+i*5.1,cliff=mesh(new THREE.DodecahedronGeometry(2.8+(i%3)*.6,0),mat(i%2?'#6ba3a2':'#83b4ba'),scene);cliff.position.set(side*(23+(i%4)*1.2),.2,zz);cliff.scale.set(1.6,.75,1.15)}
+for(let i=0;i<55;i++){const xx=-32+(i*19%65),zz=-46+(i*31%90),p=curve.getPointAt((i*.137)%1);if(Math.abs(xx-p.x)<5.1&&Math.abs(zz-p.z)<4.4)continue;if(xx>14&&xx<27&&zz>-42&&zz<44)continue;tree(xx,zz,.48+(i%6)*.13)}
+for(let i=0;i<10;i++){const side=i%2?-1:1,zz=-43+i*5.1,cliff=mesh(new THREE.DodecahedronGeometry(2.8+(i%3)*.6,0),mat(i%2?'#6ba3a2':'#83b4ba'),scene);cliff.position.set(side*(23+(i%4)*1.2),.2,zz);cliff.scale.set(1.6,.75,1.15)}
 const castle=new THREE.Group();scene.add(castle);castle.position.set(23,.15,-29);box(castle,0,2,0,13,4,3,mat('#9bb8cc'));box(castle,0,4.1,0,14,.35,3.6,mats.gold);
 for(const xx of [-5.4,-2.7,0,2.7,5.4])box(castle,xx,4.7,0,.55,1,.55,mat('#b8c5d6'));
 for(const [xx,zz,h] of [[-6,-1,7],[6,-1,8],[-3,1,6],[3,1,6]]){const t=mesh(new THREE.CylinderGeometry(1,1.3,h,8),mat('#b5cddd'),castle);t.position.set(xx,h/2,zz);const roof=mesh(new THREE.ConeGeometry(1.5,2.8,8),mats.gold,castle);roof.position.set(xx,h+1,zz)}
@@ -96,8 +96,8 @@ for(const p of [...particles]){p.life-=dt;if(p.beam){p.mesh.material.opacity=Mat
 for(let i=0;i<12;i++){const g=scene.children[i];if(g&&g.userData.float!==undefined)g.position.y=.8+Math.sin(performance.now()*.0015+i)*.3}
 }
 let lastLabelX=-999,lastLabelY=-999;function animate(){requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05);update(dt);renderer.render(scene,camera);const v=startMarker.position.clone().project(camera),lx=((v.x*.5+.5)*innerWidth),ly=((-v.y*.5+.5)*innerHeight-30);if(Math.abs(lx-lastLabelX)>1||Math.abs(ly-lastLabelY)>1){startLabel.style.left=lx+'px';startLabel.style.top=ly+'px';lastLabelX=lx;lastLabelY=ly;}}
-const clock=new THREE.Clock();setCamera();window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1.15));applyZoom()});
-animate();requestAnimationFrame(()=>{$('loading').classList.add('hide');setTimeout(()=>$('loading').remove(),500)});Promise.all(modelDefs.map(loadModel)).then(()=>{if(modelCache.size)toast('2.5D 戰場就緒 · 動態角色 '+modelCache.size+' 組已載入');else toast('2.5D 戰場就緒 · 使用內建動畫角色')});
+const clock=new THREE.Clock();setCamera();window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,1));applyZoom()});
+animate();requestAnimationFrame(()=>{$('loading').classList.add('hide');setTimeout(()=>$('loading').remove(),500)});toast('2.5D 戰場就緒 · 低負載動畫模式');
 </script><script>
 /* Safety net: never leave the user trapped behind the splash screen if a CDN module fails. */
 window.setTimeout(function(){
